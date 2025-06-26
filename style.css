@@ -9,7 +9,9 @@
   text-transform: capitalize;
   transition: all 0.3s linear;
 }
-html, body {
+
+html,
+body {
   overflow-x: hidden;
   /* Avoid overflow-y: hidden unless you want to disable ALL vertical scrolling */
 }
@@ -116,14 +118,12 @@ main {
   font-style: italic;
 }
 
-/*home*/
 .home {
   position: relative;
   width: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  /* Put grain on top, gradient below */
   background:
     url(images/grain.1ccdda41.png) repeat,
     url(images/gradient-optimized.svg) no-repeat;
@@ -190,21 +190,30 @@ main {
   transform: scale(1.2);
 }
 
+*/
+
 /* About Section */
 .about-section {
-  max-width: 100%;
-  height: auto;
+  /* margin-top: 5rem; */      /* Remove or comment out this line */
+  width: 100vw;
+  min-height: 100vh;           /* Fill the viewport vertically */
   display: flex;
-  z-index: 2;
   justify-content: center;
   align-items: center;
   padding: 60px 0;
   background-image: url(images/gradient-optimized.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  z-index: 2;
 }
+
 
 .about-card {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 40px;
   max-width: 1000px;
   width: 100%;
@@ -212,6 +221,9 @@ main {
   border-radius: 16px;
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
   padding: 40px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-top: 5rem;
 }
 
 .img-box {
@@ -353,19 +365,20 @@ main {
 .feature-project {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: unset;      /* Remove fixed height */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(46, 48, 54, 0.85);
-  background-image: url(images/grain.1ccdda41.png);
-  z-index: 1;
+  background: none;       /* Remove background from here */
+  padding: 60px 0;
 }
 
 .heading-3 {
   position: absolute;
   top: 20px;
   left: 50%;
+  margin-bottom: 5rem;
   transform: translateX(-50%);
   text-align: center;
   font-size: 2.5rem;
@@ -388,18 +401,21 @@ main {
 
 .card-box-2 {
   position: relative;
-  width: 80%;
-  height: 60%;
-  background: linear-gradient(135deg,
-      rgba(250, 234, 234, 0.1) 0%,
-      rgba(250, 2, 2, 0.2) 100%);
-  padding: 20px;
-  border-radius: 10px;
+  width: 100%;
+  max-width: 80%;
+  min-width: 0;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(78, 147, 255, 0.10);
+  padding: 32px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  transition: background-size 0.3s;
+  margin-top: 10rem;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .card-box-2 .icon-3 {
@@ -412,7 +428,7 @@ main {
 
 .card-box-2 .card-content h2 {
   font-size: 2rem;
-  color: #000000;
+  color: #777777;
   margin-bottom: 2rem;
   margin-top: 2rem;
 }
@@ -422,7 +438,7 @@ main {
   justify-content: center;
   font-size: 2rem;
   color: #686666;
-  margin-bottom: 10px;
+  margin-bottom: 10rem;
 }
 
 .card-box-2 .btn-2 {
@@ -466,8 +482,9 @@ main {
 
 .icon-3 span {
   font-size: 7rem;
-  color: #000000;
+  color: #0020ad;
 }
+
 .btn-2 .btn-link {
   display: inline-block;
   width: 100%;
@@ -480,6 +497,7 @@ main {
   text-decoration: none;
   transition: background 0.3s, color 0.3s;
 }
+
 .btn-2 .btn-link:hover {
   background: #001aff;
   color: #fff;
@@ -630,6 +648,46 @@ main {
   margin: 0;
 }
 
+/* poster section */
+.poster {
+  position: relative;
+  width: 100vw;
+  left: 0;
+  transform: none;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #FFD700;
+  margin: 0;
+  padding: 0;
+  background: none;
+  /* Remove any background here */
+  overflow: hidden;
+}
+
+.poster .bg-3 {
+  position: relative;
+  background-image: url(images/gradient-optimized.svg);
+  width: 100vw;
+  min-height: 100%;
+  margin: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 0;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ps-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .footer {
   width: 100%;
   position: absolute;
@@ -732,6 +790,7 @@ main {
   color: #fff;
 }
 
+
 @media (max-width: 991px) {
   html {
     font-size: 55%;
@@ -770,6 +829,12 @@ main {
   .about-section {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+  .about-card {
+    width: calc(100vw - 4rem); /* 2rem left + 2rem right */
+    margin-left: 2rem;
+    margin-right: 2rem;
+    box-sizing: border-box;
   }
 
   .card-box-2 {
@@ -811,6 +876,8 @@ main {
   .about-card {
     gap: 24px;
     padding: 24px;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 
   .img-box img {
@@ -883,6 +950,12 @@ main {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+  .about-card {
+    width: calc(100vw - 4rem); /* 2rem left + 2rem right */
+    margin-left: 2rem;
+    margin-right: 2rem;
+    box-sizing: border-box;
+  }
 
   .feature-project .heading-3 {
     font-size: 3rem;
@@ -917,6 +990,19 @@ main {
   .home .content .btn {
     margin-bottom: 5rem;
   }
+  .poster {
+    background-image: url(images/gradient-optimized.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left center;
+    /* Anchor the image to the right */
+    margin-right: 0;
+    width: 100vw;
+    min-height: 100px;
+    /* Adjust as needed for your content */
+    overflow: hidden;
+  }
+
 }
 
 @media (max-width: 600px) {
@@ -1005,15 +1091,17 @@ main {
   }
 
   .about-section {
-    padding: 20px;
+    padding: 20px 0;
+    min-height: 100vh;
   }
 
   .about-card {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     padding: 20px;
-    margin-top: 5rem;
+    margin: 0 auto;
   }
 
   .img-box img {
@@ -1047,6 +1135,24 @@ main {
     min-width: unset;
     padding: 12px;
   }
+  .img-box img,
+  .ui-images img,
+  .img-2-left img {
+    border: 2px solid #FFD700 !important;
+  }
+  .poster {
+    background-image: url(images/gradient-optimized.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left center;
+    /* Anchor the image to the right */
+    margin-right: 0;
+    width: 100vw;
+    min-height: 100px;
+    /* Adjust as needed for your content */
+    overflow: hidden;
+  }
+
 }
 
 @media (max-width: 717px) {
@@ -1122,9 +1228,19 @@ main {
     font-size: 2rem;
   }
 
-  .home .content .btn:hover{
+  .home .content .btn:hover {
     background-color: #ffffff;
-    
+
+  }
+  .about-section{
+    min-height: 10vh;
+  }
+  .about-card{
+    width: calc(100vw - 4rem); /* 2rem left + 2rem right */
+    margin-left: 2rem;
+    margin-right: 2rem;
+    box-sizing: border-box;
+
   }
 
   .projects-section {
@@ -1155,7 +1271,8 @@ main {
   .feature-project .heading-3 h1 {
     font-size: 3rem;
   }
-  .card-box-2{
+
+  .card-box-2 {
     width: 92%;
     max-width: 98vw;
     min-width: unset;
@@ -1170,7 +1287,7 @@ main {
 
   .card-box-2 .card-content h2 {
     font-size: 3rem;
-    
+
   }
 
   .card-box-2 .card-content p {
@@ -1200,9 +1317,22 @@ main {
     /* Adjust as needed for your content */
     overflow: hidden;
   }
-  .about-section{
+  .poster {
+    background-image: url(images/gradient-optimized.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left center;
+    /* Anchor the image to the right */
+    margin-right: 0;
+    width: 100vw;
+    min-height: 100px;
+    /* Adjust as needed for your content */
+    overflow: hidden;
+  }
+
+  .about-section {
     background-image: url(images/gradient-optimized.svg);
     background-position: top;
-    
+
   }
 }
